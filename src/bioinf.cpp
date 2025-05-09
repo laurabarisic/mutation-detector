@@ -15,6 +15,32 @@ struct SamRecord {
     string seq;
 };
 
+struct PosVotes {
+    int none = 0;
+    int deleted = 0;
+    int inserted = 0;
+    int substituted = 0;
+};
+
+string reverse(const string& seq){
+    string reversed_seq = "";
+    for (int i = seq.length()-1; i >= 0; i--){
+        char base = seq[i];
+        char new_base;
+
+        if (base == 'A') new_base = 'T';
+        else if (base == 'T') new_base = 'A';
+        else if (base == 'G') new_base = 'C';
+        else if (base == 'C') new_base = 'G';
+        else new_base = base; // za nepoznate baze (npr. N)
+
+        reversed_seq += new_base;
+    } 
+    cout << "original: " << seq << ", reversed: " << reversed_seq << endl;
+    return reversed_seq;
+}
+
+
 // čitanje FASTA datoteke (spajanje svih linija bez zaglavlja u jedan string)
 string read_fasta(const string& filename) {
     ifstream file(filename);
@@ -52,6 +78,8 @@ bool parse_sam_line(const string& line, SamRecord& record) {
     record.cigar = fields[5];
     record.seq = fields[9];
 
+    if (record.flag == 16) record.seq  = reverse(record.seq);
+
     return true;
 }
 
@@ -79,8 +107,8 @@ vector<SamRecord> read_sam(const string& filename) {
 }
 
 int main() {
-    string fasta_path = "/mutation-detector/data/lambda.fasta";
-    string sam_path = "/mutation-detector/data/lambda.sam";
+    string fasta_path = "/home/laura/mutation-detector/data/lambda.fasta";
+    string sam_path = "/home/laura/mutation-detector/data/lambda.sam";
 
     // učitanje FASTA
     string fasta_sequence = read_fasta(fasta_path);
@@ -97,6 +125,10 @@ int main() {
         cout << "QNAME: " << r.qname << " | FLAG: " << r.flag << " | RNAME: " << r.rname
              << " | POS: " << r.pos << " | CIGAR: " << r.cigar << " | SEQ: " << r.seq << "\n";
     }
+
+    string test_seq = "ACGTTGCA";
+    string reversed = reverse(test_seq);
+
     
     return 0;
 }
