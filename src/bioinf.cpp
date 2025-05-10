@@ -148,7 +148,7 @@ void voting(unordered_map<long, PosVotes>& dict, unordered_map<long, pair<string
 void mutations(const vector<SamRecord>& sam_records, unordered_map<long, PosVotes>& dict, const string& fasta_sequence, unordered_map<long, pair<string, string>>& final_dict) {
 
     for (const auto& record : sam_records) {
-        long refPos = record.pos - 1;  // referenca je 0-indeksirana
+        long refPos = record.pos - 1; 
         long readPos = 0;
         int i = 0;
 
@@ -159,8 +159,7 @@ void mutations(const vector<SamRecord>& sam_records, unordered_map<long, PosVote
                 i++;
             }
 
-            if (i >= record.cigar.length()) break;  // safety check
-
+            if (i >= record.cigar.length()) break;  
             char op = record.cigar[i];
             long length = stol(num);
             i++;
@@ -187,7 +186,6 @@ void mutations(const vector<SamRecord>& sam_records, unordered_map<long, PosVote
                 for (int j = 0; j < length; ++j) {
                     if (readPos >= record.seq.size()) break;
 
-                    // umetanje se dodjeljuje trenutnoj poziciji refGenoma
                     dict[refPos].inserted++;
                     dict[refPos].insertionBases.push_back(record.seq[readPos]);
                     readPos++;
@@ -200,7 +198,7 @@ void mutations(const vector<SamRecord>& sam_records, unordered_map<long, PosVote
                     refPos++;
                 }
             } else if (op == 'S') {
-                readPos += length;  // soft-clipped, preskoči očitanje
+                readPos += length;  
             }
         }
     }
@@ -249,14 +247,13 @@ int main() {
         cout << "\n\n";
     }
 
-    // Zapis u CSV datoteku
+    // zapis u CSV datoteku
     ofstream outfile("mutations.csv");
     if (!outfile) {
         cerr << "Greška pri otvaranju datoteke za pisanje mutacija." << endl;
         return 1;
     }
 
-    // Pretvori u sortiran vektor radi urednosti
     vector<pair<long, pair<string, string>>> sorted_mutations(final_dict.begin(), final_dict.end());
     sort(sorted_mutations.begin(), sorted_mutations.end());
 
