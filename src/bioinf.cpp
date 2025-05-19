@@ -104,11 +104,13 @@ vector<SamRecord> read_sam(const string& filename) {
 }
 
 void voting(unordered_map<long, PosVotes>& dict, unordered_map<long, pair<string, string>>& final_dict) {
+    string max_votes;
+    string max_base;
     for (const auto& [pos, votes] : dict) {
-        string max_votes = "none";
-        string max_base = "-";
+        max_votes = "none";
+        max_base = "-";
 
-        if (votes.none >= votes.deleted && votes.none >= votes.inserted && votes.none >= votes.substituted){
+        if (votes.none >= votes.deleted-1 && votes.none >= votes.inserted-1 && votes.none >= votes.substituted-1){
             continue;
         } else if (votes.deleted >= votes.none && votes.deleted >= votes.inserted && votes.deleted >= votes.substituted) {
             max_votes = "D";
@@ -140,12 +142,17 @@ void voting(unordered_map<long, PosVotes>& dict, unordered_map<long, pair<string
             }
             max_base = string(1, max_elem);
         }
-
+        
         final_dict[pos] = {max_votes, max_base};
     }
 }
 
 void mutations(const vector<SamRecord>& sam_records, unordered_map<long, PosVotes>& dict, const string& fasta_sequence, unordered_map<long, pair<string, string>>& final_dict) {
+    ofstream matchingFile("matching.txt");
+    if (!matchingFile) {
+        cerr << "Greška pri otvaranju datoteke matching.txt" << endl;
+        return;
+    }
 
     for (const auto& record : sam_records) {
         long refPos = record.pos - 1; 
@@ -159,7 +166,7 @@ void mutations(const vector<SamRecord>& sam_records, unordered_map<long, PosVote
                 i++;
             }
 
-            if (i >= record.cigar.length()) break;  
+            if (i >= record.cigar.length()) break; 
             char op = record.cigar[i];
             long length = stol(num);
             i++;
@@ -172,19 +179,24 @@ void mutations(const vector<SamRecord>& sam_records, unordered_map<long, PosVote
                     char refBase = fasta_sequence[refPos];
                     char readBase = record.seq[readPos];
 
+                    //cout << refPos << " - REF_BASE " << refBase << " | " << readPos << " - READ_BASE " << readBase << endl;
+                    matchingFile << refPos << " - REF_BASE " << refBase << " | " << readPos << " - READ_BASE " << readBase << endl;
+
+
                     if (refBase == readBase) {
                         dict[refPos].none++;
                     } else {
                         dict[refPos].substituted++;
                         dict[refPos].substitutionBases.push_back(readBase);
                     }
-
                     refPos++;
                     readPos++;
                 }
+            
             } else if (op == 'I') {
                 for (int j = 0; j < length; ++j) {
-                    if (readPos >= record.seq.size()) break;
+                    if (refPos >= fasta_sequence.size() || readPos >= record.seq.size())
+                        break;
 
                     dict[refPos].inserted++;
                     dict[refPos].insertionBases.push_back(record.seq[readPos]);
@@ -192,7 +204,8 @@ void mutations(const vector<SamRecord>& sam_records, unordered_map<long, PosVote
                 }
             } else if (op == 'D') {
                 for (int j = 0; j < length; ++j) {
-                    if (refPos >= fasta_sequence.size()) break;
+                    if (refPos >= fasta_sequence.size() || readPos >= record.seq.size())
+                        break;
 
                     dict[refPos].deleted++;
                     refPos++;
@@ -200,9 +213,37 @@ void mutations(const vector<SamRecord>& sam_records, unordered_map<long, PosVote
             } else if (op == 'S') {
                 readPos += length;  
             }
+         
         }
     }
+    matchingFile.close();
 
+    ofstream votingFile("voting.txt");
+     // Zapisivanje glasova u datoteku
+    votingFile << "\n--- Glasovi po pozicijama u referentnom genomu ---\n";
+    for (const auto& [pos, votes] : dict) {
+        votingFile << "Pozicija: " << pos << "\n";
+        votingFile << "  - Podudaranja (none): " << votes.none << "\n";
+        votingFile << "  - Supstitucije: " << votes.substituted << " ";
+        if (!votes.substitutionBases.empty()) {
+            votingFile << "[";
+            for (char base : votes.substitutionBases) votingFile << base << ",";
+            votingFile << "]";
+        }
+        votingFile << "\n";
+        votingFile << "  - Brisanja (deleted): " << votes.deleted << "\n";
+        votingFile << "  - Umetanja (inserted): " << votes.inserted << " ";
+        if (!votes.insertionBases.empty()) {
+            votingFile << "[";
+            for (char base : votes.insertionBases) votingFile << base << ",";
+            votingFile << "]";
+        }
+        votingFile << "\n\n";
+    }
+
+    // Zatvaranje datoteke
+    votingFile.close();
+    
     voting(dict, final_dict);
 }
 
@@ -226,27 +267,8 @@ int main() {
     unordered_map<long, pair<string, string>> final_dict;
     mutations(sam_records, dict, fasta_sequence, final_dict);
 
-    cout << "\n--- Glasovi po pozicijama u referentnom genomu ---\n";
-    for (const auto& [pos, votes] : dict) {
-        cout << "Pozicija: " << pos + 1 << "\n";
-        cout << "  - Podudaranja (none): " << votes.none << "\n";
-        cout << "  - Supstitucije: " << votes.substituted << " ";
-        if (!votes.substitutionBases.empty()) {
-            cout << "[";
-            for (char base : votes.substitutionBases) cout << base << ",";
-            cout << "]";
-        }
-        cout << "\n";
-        cout << "  - Brisanja (deleted): " << votes.deleted << "\n";
-        cout << "  - Umetanja (inserted): " << votes.inserted << " ";
-        if (!votes.insertionBases.empty()) {
-            cout << "[";
-            for (char base : votes.insertionBases) cout << base << ",";
-            cout << "]";
-        }
-        cout << "\n\n";
-    }
-
+   
+    
     // zapis u CSV datoteku
     ofstream outfile("mutations.csv");
     if (!outfile) {
