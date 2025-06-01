@@ -1,11 +1,11 @@
 #include <algorithm>
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <cmath>
 
 using namespace std;
 
@@ -29,8 +29,7 @@ struct PosVotes {
     vector<char> insertionBases;
 };
 
-string reversee(const string& seq)
-{
+string reversee(const string &seq) {
     string reversed_seq(seq.length(), ' ');
     size_t index = 0;
     for (int i = (int)seq.length() - 1; i >= 0; i--) {
@@ -57,8 +56,7 @@ string reversee(const string& seq)
     return reversed_seq;
 }
 
-string read_fasta(const string& filename)
-{
+string read_fasta(const string &filename) {
     ifstream file(filename);
     if (!file) {
         cout << "Greška pri otvaranju FASTA datoteke." << endl;
@@ -75,8 +73,7 @@ string read_fasta(const string& filename)
     return sequence;
 }
 
-bool parse_sam_line(const string& line, SamRecord& record)
-{
+bool parse_sam_line(const string &line, SamRecord &record) {
     istringstream iss(line);
     vector<string> fields;
     string field;
@@ -96,14 +93,13 @@ bool parse_sam_line(const string& line, SamRecord& record)
     record.cigar = fields[5];
     record.seq = fields[9];
 
-    //if (record.flag == 16)
-    //    record.seq = reversee(record.seq);
+    // if (record.flag == 16)
+    //     record.seq = reversee(record.seq);
 
     return true;
 }
 
-vector<SamRecord> read_sam(const string& filename)
-{
+vector<SamRecord> read_sam(const string &filename) {
     ifstream file(filename);
     if (!file) {
         cout << "Greška pri otvaranju SAM datoteke." << endl;
@@ -126,26 +122,31 @@ vector<SamRecord> read_sam(const string& filename)
     return records;
 }
 
-void voting(unordered_map<int64_t, PosVotes>& dict,
-    unordered_map<int64_t, pair<string, string>>& final_dict)
-{
+void voting(unordered_map<int64_t, PosVotes> &dict,
+            unordered_map<int64_t, pair<string, string>> &final_dict) {
     string max_votes;
     string max_base;
-    for (const auto& [pos, votes] : dict) {
+    for (const auto &[pos, votes] : dict) {
         max_votes = "none";
         max_base = "-";
 
-        int total_votes = votes.none + votes.deleted + votes.inserted + votes.substituted;
+        int total_votes =
+            votes.none + votes.deleted + votes.inserted + votes.substituted;
 
-        if (votes.none > votes.deleted && votes.none > votes.inserted && votes.none > votes.substituted && votes.none > 2 && votes.none >= ceil(0.5*total_votes))
-        {
+        if (votes.none > votes.deleted && votes.none > votes.inserted &&
+            votes.none > votes.substituted && votes.none > 2 &&
+            votes.none >= ceil(0.5 * total_votes)) {
             continue;
-        } else if (votes.deleted > votes.none && votes.deleted > votes.inserted && votes.deleted > votes.substituted && votes.deleted > 2 && votes.deleted >= ceil(0.5*total_votes))
-        {
+        } else if (votes.deleted > votes.none &&
+                   votes.deleted > votes.inserted &&
+                   votes.deleted > votes.substituted && votes.deleted > 2 &&
+                   votes.deleted >= ceil(0.5 * total_votes)) {
             max_votes = "D";
             max_base = "-";
-        } else if (votes.inserted > votes.none && votes.inserted > votes.deleted && votes.inserted > votes.substituted && votes.inserted > 2 && votes.inserted >= ceil(0.5*total_votes))
-        {
+        } else if (votes.inserted > votes.none &&
+                   votes.inserted > votes.deleted &&
+                   votes.inserted > votes.substituted && votes.inserted > 2 &&
+                   votes.inserted >= ceil(0.5 * total_votes)) {
             max_votes = "I";
             unordered_map<char, int> freq;
             char max_elem = '\0';
@@ -158,8 +159,9 @@ void voting(unordered_map<int64_t, PosVotes>& dict,
                 }
             }
             max_base = string(1, max_elem);
-        } else if (votes.substituted > votes.none && votes.substituted > votes.inserted && votes.substituted > votes.deleted && votes.substituted > 2) 
-        {
+        } else if (votes.substituted > votes.none &&
+                   votes.substituted > votes.inserted &&
+                   votes.substituted > votes.deleted && votes.substituted > 2) {
             max_votes = "X";
             unordered_map<char, int> freq;
             char max_elem = '\0';
@@ -174,21 +176,20 @@ void voting(unordered_map<int64_t, PosVotes>& dict,
             max_base = string(1, max_elem);
         }
 
-        final_dict[pos] = { max_votes, max_base };
+        final_dict[pos] = {max_votes, max_base};
     }
 }
 
-void mutations(const vector<SamRecord>& sam_records,
-    unordered_map<int64_t, PosVotes>& dict,
-    const string& fasta_sequence,
-    unordered_map<int64_t, pair<string, string>>& final_dict)
-{
+void mutations(const vector<SamRecord> &sam_records,
+               unordered_map<int64_t, PosVotes> &dict,
+               const string &fasta_sequence,
+               unordered_map<int64_t, pair<string, string>> &final_dict) {
     ofstream matchingFile(DATA_DIR + "matching.txt");
     if (!matchingFile) {
         cerr << "Greška pri otvaranju datoteke matching.txt" << endl;
         return;
     }
-    for (const SamRecord& record : sam_records) {
+    for (const SamRecord &record : sam_records) {
 
         int64_t refPos = record.pos - 1;
         int64_t readPos = 0;
@@ -216,50 +217,63 @@ void mutations(const vector<SamRecord>& sam_records,
 
             if (op == 'M') {
                 for (int j = 0; j < length; ++j) {
-                    if (refPos >= fasta_sequence.size() || readPos >= record.seq.size())
+                    if (refPos >= fasta_sequence.size() ||
+                        readPos >= record.seq.size())
                         break;
 
                     char refBase = fasta_sequence[refPos];
                     char readBase = record.seq[readPos];
 
-                    // cout << refPos << " - REF_BASE " << refBase << " | " << readPos << " - READ_BASE " << readBase << endl;
+                    // cout << refPos << " - REF_BASE " << refBase << " | " <<
+                    // readPos << " - READ_BASE " << readBase << endl;
                     if (refBase == readBase) {
-                        matchingFile << "refpos " << refPos << " - REF_BASE " << refBase << " | " << "readpos " << readPos + 1 << " - READ_BASE " << readBase << " [MATCH]" << endl;
+                        matchingFile << "refpos " << refPos << " - REF_BASE "
+                                     << refBase << " | " << "readpos "
+                                     << readPos + 1 << " - READ_BASE "
+                                     << readBase << " [MATCH]" << endl;
                         dict[refPos].none++;
                     } else {
-                        matchingFile << "refpos " << refPos << " - REF_BASE " << refBase << " | " << "readpos " << readPos + 1 << " - READ_BASE " << readBase << " [MISS]" << endl;
+                        matchingFile << "refpos " << refPos << " - REF_BASE "
+                                     << refBase << " | " << "readpos "
+                                     << readPos + 1 << " - READ_BASE "
+                                     << readBase << " [MISS]" << endl;
                         dict[refPos].substituted++;
                         dict[refPos].substitutionBases.push_back(readBase);
                     }
                     refPos++;
                     readPos++;
                 }
-
             } else if (op == 'I') {
                 for (int j = 0; j < length; ++j) {
-                    
+
                     if (readPos >= record.seq.size())
                         break;
-                    
+
                     char refBase = fasta_sequence[refPos];
                     char readBase = record.seq[readPos];
 
-                    matchingFile << "refpos "  << refPos << " - REF_BASE " << refBase << " | " << "readpos "  << readPos + 1 << " - READ_BASE " << readBase << " [INSERT]" << endl;
-                    
+                    matchingFile << "refpos " << refPos << " - REF_BASE "
+                                 << refBase << " | " << "readpos "
+                                 << readPos + 1 << " - READ_BASE " << readBase
+                                 << " [INSERT]" << endl;
+
                     dict[refPos].insertionBases.push_back(record.seq[readPos]);
-                    
                 }
                 dict[refPos].inserted++;
                 readPos += length;
             } else if (op == 'D') {
                 for (int j = 0; j < length; ++j) {
-                    if (refPos >= fasta_sequence.size() || readPos >= record.seq.size())
+                    if (refPos >= fasta_sequence.size() ||
+                        readPos >= record.seq.size())
                         break;
 
                     char refBase = fasta_sequence[refPos];
                     char readBase = record.seq[readPos];
 
-                    matchingFile << "refpos " << refPos << " - REF_BASE " << refBase << " | " << "readpos " << readPos + 1 << " - READ_BASE " << readBase << " [DELETE]" << endl;
+                    matchingFile << "refpos " << refPos << " - REF_BASE "
+                                 << refBase << " | " << "readpos "
+                                 << readPos + 1 << " - READ_BASE " << readBase
+                                 << " [DELETE]" << endl;
                     dict[refPos].deleted++;
                     refPos++;
                 }
@@ -273,7 +287,7 @@ void mutations(const vector<SamRecord>& sam_records,
     ofstream votingFile(DATA_DIR + "voting.txt");
     // Zapisivanje glasova u datoteku
     votingFile << "\n--- Glasovi po pozicijama u referentnom genomu ---\n";
-    for (const auto& [pos, votes] : dict) {
+    for (const auto &[pos, votes] : dict) {
         votingFile << "Pozicija: " << pos << "\n";
         votingFile << "  - Podudaranja (none): " << votes.none << "\n";
         votingFile << "  - Supstitucije: " << votes.substituted << " ";
@@ -301,8 +315,7 @@ void mutations(const vector<SamRecord>& sam_records,
     voting(dict, final_dict);
 }
 
-int main()
-{
+int main() {
     string fasta_path = DATA_DIR + "lambda.fasta";
     string sam_path = DATA_DIR + "lambda.sam";
 
@@ -312,7 +325,7 @@ int main()
     vector<SamRecord> sam_records = read_sam(sam_path);
     cout << "\nUkupno očitanih SAM zapisa: " << sam_records.size() << "\n";
 
-    for (const auto& r : sam_records) {
+    for (const auto &r : sam_records) {
         cout << "QNAME: " << r.qname << " | FLAG: " << r.flag
              << " | RNAME: " << r.rname << " | POS: " << r.pos
              << " | CIGAR: " << r.cigar << " | SEQ: " << r.seq << "\n";
@@ -329,13 +342,14 @@ int main()
         return 1;
     }
 
-    vector<pair<int64_t, pair<string, string>>> sorted_mutations(final_dict.begin(),
-        final_dict.end());
+    vector<pair<int64_t, pair<string, string>>> sorted_mutations(
+        final_dict.begin(), final_dict.end());
     sort(sorted_mutations.begin(), sorted_mutations.end());
 
-    for (const auto& [pos, result] : sorted_mutations) {
+    for (const auto &[pos, result] : sorted_mutations) {
         if (result.first != "none") {
-            outfile << result.first << "," << pos << "," << result.second << "\n";
+            outfile << result.first << "," << pos << "," << result.second
+                    << "\n";
         }
     }
     outfile.close();
