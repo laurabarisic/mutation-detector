@@ -37,6 +37,40 @@ Za rad na ovom projektu potrebni su sljedeći alati:
     cd freebayes
     make
 
+### Koraci:
+    # Koristimo datoteke
+    reference="lambda.fasta"
+    reads="lambda_simulated_reads.fasta"
+    samOutput="lambda.sam"
+    bamOutput="lambda.bam"
+    sortedBam="lambda_sorted.bam"
+    markedBam="lambda_marked.bam"
+    csvOutput="lambda_mutated.csv"
+    vcfOutput="lambda_freebayes.vcf"
+    freebayesOutput="lambda_freebayes_mutations.csv"
+    index="lambda.fasta.fai"
+    
+    # Step 1: Run Minimap2
+    minimap2 -ax map-ont $reference $reads > $samOutput
+    
+    # Step 2: Call detector to detect mutations
+    ./bioinf
+    
+    # Step 3: Generate index for the reference genome
+    samtools faidx $reference
+    
+    # Step 4: Convert SAM to BAM
+    samtools view -bS $samOutput > $bamOutput
+    
+    # Step 5: Sort BAM file
+    samtools sort -o $sortedBam $bamOutput
+    
+    # Step 6: Index marked BAM file
+    samtools index $markedBam
+    
+    # Step 7: Run FreeBayes for evaluation 
+    freebayes -f $reference $markedBam > $vcfOutput
+
 ### ▶️ Pokretanje programa
 
     g++ bioinf.cpp -o bioinf
