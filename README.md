@@ -37,7 +37,7 @@ Za rad na ovom projektu potrebni su sljedeći alati:
     cd freebayes
     make
 
-### 👣Koraci:
+### 👣 Koraci:
     # Koristimo datoteke
     reference="lambda.fasta"
     reads="lambda_simulated_reads.fasta"
