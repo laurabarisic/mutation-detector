@@ -73,6 +73,7 @@ Za rad na ovom projektu potrebni su sljedeći alati:
 
 ### ▶️ Pokretanje programa
 
+    cd src
     g++ bioinf.cpp -o bioinf
     ./bioinf
 
