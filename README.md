@@ -1,30 +1,33 @@
 Pronalazak mutacija pomoću treće generacije sekvenciranja
+
 Opis projekta
 
 Ovaj projekt razvijen je u sklopu kolegija Bioinformatika 1 na FER-u, s ciljem analize mutacija u DNA sekvencama korištenjem podataka dobivenih metodama sekvenciranja treće generacije.
 
 Glavni zadaci uključuju:
 
-    poravnanje očitanja (reads) na referentni genom pomoću alata minimap2,
+    - poravnanje očitanja (reads) na referentni genom pomoću alata minimap2,
 
-    identifikaciju mutacija poput supstitucija, insercija i delecija,
+    - identifikaciju mutacija poput supstitucija, insercija i delecija,
 
-    usporedbu rezultata s izlazom alata FreeBayes koji koristi model varijacija temeljeno na Bayesovoj statistici,
+    - usporedbu rezultata s izlazom alata FreeBayes koji koristi model varijacija temeljeno na Bayesovoj statistici,
 
-    generiranje pregledne CSV datoteke s detektiranim mutacijama.
+    - generiranje pregledne CSV datoteke s detektiranim mutacijama.
 
 ⚙️ Instalacija
+
 ✅ Preduvjeti
 
 Za rad na ovom projektu potrebni su sljedeći alati:
 
-    C++ kompajler (preporuka: g++)
+    - C++ kompajler (preporuka: g++)
 
-    Minimap2
+    - Minimap2
 
-    FreeBayes
+    - FreeBayes
 
 Instalacija alata
+
 Minimap2
 
 git clone https://github.com/lh3/minimap2
@@ -54,10 +57,11 @@ Izlaz
 
     freebayes_mutations.csv: CSV tablica u formatu:
 
-Position,Type,REF,ALT
-261,X,G,T
-627,X,C,T
-1043,D,A,-
+Position,Type,ALT
+X,261,G
+X,627,T
+X,726,A
+D,1043,-
 ...
 
 Legenda tipova:
@@ -70,16 +74,16 @@ Legenda tipova:
 
 👩‍🔬 Autori
 
-    Laura Barišić
+    -Laura Barišić
 
-    Mia Nazor
+    - Mia Nazor
 
 🎓 Napomena
 
 Ovaj projekt služi isključivo za edukativne svrhe u sklopu kolegija. Uz osnovnu detekciju mutacija, moguće su nadogradnje poput:
 
-    analize učestalosti mutacija po regijama,
+    - analize učestalosti mutacija po regijama,
 
-    dodatne vizualizacije rezultata,
+    - dodatne vizualizacije rezultata,
 
-    itd.
+    -itd.
