@@ -89,7 +89,7 @@ bool parse_sam_line(const string &line, SamRecord &record) {
         fields.push_back(field);
     }
 
-    if (fields.size() < 11 || stoi(fields[1]) == 4) {
+    if (fields.size() < 11 || stoi(fields[1]) & 4) {
         return false;
     }
 
@@ -100,8 +100,10 @@ bool parse_sam_line(const string &line, SamRecord &record) {
     record.cigar = fields[5];
     record.seq = fields[9];
 
-    // if (record.flag == 16)
-    //     record.seq = reversee(record.seq);
+    // If this is commented we get better results
+    // but it is not correct according to the SAM specification
+    if (record.flag & 16)
+        record.seq = reversee(record.seq);
 
     return true;
 }
@@ -143,35 +145,14 @@ void voting(unordered_map<int64_t, PosVotes> &dict,
         int total_votes =
             votes.none + votes.deleted + votes.inserted + votes.substituted;
 
-        if (votes.none > votes.deleted && votes.none > votes.inserted &&
-            votes.none > votes.substituted && votes.none > 2 &&
-            votes.none >= ceil(0.5 * total_votes)) {
+        if (votes.none >= votes.substituted && votes.none >= votes.inserted &&
+            votes.none >= votes.deleted && votes.none > 2 &&
+            votes.none >= ceil(0.4 * total_votes)) {
             continue;
-        } else if (votes.deleted > votes.none &&
-                   votes.deleted > votes.inserted &&
-                   votes.deleted > votes.substituted && votes.deleted > 2 &&
-                   votes.deleted >= ceil(0.5 * total_votes)) {
-            max_votes = "D";
-            max_base = "-";
-        } else if (votes.inserted > votes.none &&
-                   votes.inserted > votes.deleted &&
-                   votes.inserted > votes.substituted && votes.inserted > 2 &&
-                   votes.inserted >= ceil(0.5 * total_votes)) {
-            max_votes = "I";
-            unordered_map<char, int> freq;
-            char max_elem = '\0';
-            int max_count = 0;
-            for (char c : votes.insertionBases) {
-                int count = ++freq[c];
-                if (count > max_count) {
-                    max_count = count;
-                    max_elem = c;
-                }
-            }
-            max_base = string(1, max_elem);
-        } else if (votes.substituted > votes.none &&
-                   votes.substituted > votes.inserted &&
-                   votes.substituted > votes.deleted && votes.substituted > 2) {
+        } else if (votes.substituted >= votes.inserted &&
+                   votes.substituted >= votes.deleted &&
+                   votes.substituted >= votes.none && votes.substituted > 2 &&
+                   votes.substituted >= ceil(0.4 * total_votes)) {
             max_votes = "X";
             unordered_map<char, int> freq;
             char max_elem = '\0';
@@ -184,6 +165,28 @@ void voting(unordered_map<int64_t, PosVotes> &dict,
                 }
             }
             max_base = string(1, max_elem);
+        } else if (votes.inserted >= votes.substituted &&
+                   votes.inserted >= votes.deleted &&
+                   votes.inserted >= votes.none && votes.inserted > 2 &&
+                   votes.inserted >= ceil(0.4 * total_votes)) {
+            max_votes = "I";
+            unordered_map<char, int> freq;
+            char max_elem = '\0';
+            int max_count = 0;
+            for (char c : votes.insertionBases) {
+                int count = ++freq[c];
+                if (count > max_count) {
+                    max_count = count;
+                    max_elem = c;
+                }
+            }
+            max_base = string(1, max_elem);
+        } else if (votes.deleted >= votes.substituted &&
+                   votes.deleted >= votes.inserted &&
+                   votes.deleted >= votes.none && votes.deleted > 2 &&
+                   votes.deleted >= ceil(0.4 * total_votes)) {
+            max_votes = "D";
+            max_base = "-";
         }
 
         final_dict[pos] = {max_votes, max_base};
@@ -229,8 +232,6 @@ void mutations(const vector<SamRecord> &sam_records,
                     char refBase = fasta_sequence[refPos];
                     char readBase = record.seq[readPos];
 
-                    // cout << refPos << " - REF_BASE " << refBase << " | " <<
-                    // readPos << " - READ_BASE " << readBase << endl;
                     if (refBase == readBase) {
                         matchingFile << "refpos " << refPos << " - REF_BASE "
                                      << refBase << " | " << "readpos "
@@ -248,23 +249,23 @@ void mutations(const vector<SamRecord> &sam_records,
                     refPos++;
                     readPos++;
                 }
+
             } else if (op == 'I') {
                 for (int j = 0; j < length; ++j) {
-
-                    if (readPos >= record.seq.size())
+                    if (readPos + j >= record.seq.size())
                         break;
 
                     char refBase = fasta_sequence[refPos];
-                    char readBase = record.seq[readPos];
+                    char readBase = record.seq[readPos + j];
 
                     matchingFile << "refpos " << refPos << " - REF_BASE "
                                  << refBase << " | " << "readpos "
-                                 << readPos + 1 << " - READ_BASE " << readBase
-                                 << " [INSERT]" << endl;
+                                 << (readPos + j + 1) << " - READ_BASE "
+                                 << readBase << " [INSERT]" << endl;
 
-                    dict[refPos].insertionBases.push_back(record.seq[readPos]);
+                    dict[refPos].insertionBases.push_back(readBase);
+                    dict[refPos].inserted++;
                 }
-                dict[refPos].inserted++;
                 readPos += length;
             } else if (op == 'D') {
                 for (int j = 0; j < length; ++j) {
@@ -313,7 +314,6 @@ void mutations(const vector<SamRecord> &sam_records,
         }
         votingFile << "\n\n";
     }
-
     // Closing the voting file
     votingFile.close();
 
@@ -364,7 +364,6 @@ int main() {
     auto end_time = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_seconds = end_time - start_time;
 
-    std::cout << "Vrijeme izvođenja: " << elapsed_seconds.count()
-              << " sekundi\n";
+    cout << "Vrijeme izvođenja: " << elapsed_seconds.count() << " sekundi\n";
     return 0;
 }

@@ -1,0 +1,585 @@
+Rezultati evaluacije
+====================
+Provjera referentne mutacije: X,627,T
+  Pronađena predikcija: X,627,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,726,A
+  Pronađena predikcija: X,726,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,1043,-
+  Pronađena predikcija: D,1043,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,1329,A
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,1536,C
+  Pronađena predikcija: X,1536,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,1702,T
+  Pronađena predikcija: X,1702,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,1706,A
+  Pronađena predikcija: X,1706,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,2100,G
+  Pronađena predikcija: I,2100,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,2286,C
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,2795,T
+  Pronađena predikcija: X,2795,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,2918,-
+  Pronađena predikcija: D,2918,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,3211,C
+  Pronađena predikcija: X,3211,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,3306,C
+  Pronađena predikcija: I,3306,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,3457,T
+  Pronađena predikcija: I,3457,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,3501,T
+  Pronađena predikcija: X,3501,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,3626,-
+  Pronađena predikcija: D,3626,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,3681,T
+  Pronađena predikcija: X,3681,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,3895,G
+  Pronađena predikcija: X,3895,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,3921,-
+  Pronađena predikcija: D,3921,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,4057,T
+  Pronađena predikcija: X,4057,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,4074,G
+  Pronađena predikcija: X,4074,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,4142,T
+  Pronađena predikcija: X,4142,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,4185,G
+  Pronađena predikcija: I,4185,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,4488,C
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,4748,C
+  Pronađena predikcija: X,4748,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,4850,C
+  Pronađena predikcija: I,4850,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,4867,A
+  Pronađena predikcija: X,4867,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,5793,A
+  Pronađena predikcija: X,5793,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,6197,-
+  Pronađena predikcija: D,6197,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,6399,A
+  Pronađena predikcija: X,6399,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,6885,C
+  Pronađena predikcija: X,6885,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,7019,-
+  Pronađena predikcija: D,7019,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,7102,G
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,7115,T
+  Pronađena predikcija: X,7115,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,7184,A
+  Pronađena predikcija: X,7184,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,7448,A
+  Pronađena predikcija: X,7448,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,7595,-
+  Pronađena predikcija: D,7595,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,7656,C
+  Pronađena predikcija: X,7656,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,7675,C
+  Pronađena predikcija: X,7675,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,7891,-
+  Pronađena predikcija: D,7891,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,8088,G
+  Pronađena predikcija: X,8088,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,8242,G
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,8493,C
+  Pronađena predikcija: X,8493,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,8770,T
+  Pronađena predikcija: X,8770,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,9437,G
+  Pronađena predikcija: X,9437,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,9577,T
+  Pronađena predikcija: X,9577,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,9696,-
+  Pronađena predikcija: D,9696,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,10054,-
+  Pronađena predikcija: D,10054,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,10109,C
+  Pronađena predikcija: X,10109,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,10750,A
+  Pronađena predikcija: X,10750,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,10957,A
+  Pronađena predikcija: X,10957,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,10962,-
+  Pronađena predikcija: D,10962,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,11766,T
+  Pronađena predikcija: I,11766,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,12173,T
+  Pronađena predikcija: I,12173,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,12265,G
+  Pronađena predikcija: X,12265,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,12496,C
+  Pronađena predikcija: X,12496,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,12712,G
+  Pronađena predikcija: X,12712,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,12893,T
+  Pronađena predikcija: X,12893,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,13151,A
+  Pronađena predikcija: X,13151,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,13746,G
+  Pronađena predikcija: X,13746,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,14770,T
+  Pronađena predikcija: X,14770,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,14828,C
+  Pronađena predikcija: I,14828,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,14953,T
+  Pronađena predikcija: I,14953,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,15006,-
+  Pronađena predikcija: D,15006,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,15053,A
+  Pronađena predikcija: I,15053,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,15236,-
+  Pronađena predikcija: D,15236,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,15570,G
+  Pronađena predikcija: X,15570,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,15576,C
+  Pronađena predikcija: X,15576,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,15670,A
+  Pronađena predikcija: I,15670,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,16102,T
+  Pronađena predikcija: X,16102,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,16185,A
+  Pronađena predikcija: X,16185,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,16348,G
+  Pronađena predikcija: X,16348,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,16360,T
+  Pronađena predikcija: X,16360,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,16419,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: I,16637,C
+  Pronađena predikcija: I,16637,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,16812,A
+  Pronađena predikcija: X,16812,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,16989,-
+  Pronađena predikcija: D,16989,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,17630,G
+  Pronađena predikcija: X,17630,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,18443,G
+  Pronađena predikcija: X,18443,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,18480,G
+  Pronađena predikcija: X,18480,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,18652,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,19041,T
+  Pronađena predikcija: X,19041,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,20154,A
+  Pronađena predikcija: I,20154,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,20281,T
+  Pronađena predikcija: I,20281,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,20716,T
+  Pronađena predikcija: X,20716,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,20763,C
+  Pronađena predikcija: X,20763,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,21828,T
+  Pronađena predikcija: X,21828,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,21989,C
+  Pronađena predikcija: X,21989,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,22528,G
+  Pronađena predikcija: X,22528,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,22686,T
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: I,23057,A
+  Pronađena predikcija: I,23057,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,23378,A
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,23468,C
+  Pronađena predikcija: X,23468,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,23515,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: I,23581,G
+  Pronađena predikcija: I,23581,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,24221,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,24276,G
+  Pronađena predikcija: X,24276,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,24478,-
+  Pronađena predikcija: D,24478,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,25221,A
+  Pronađena predikcija: X,25221,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,25292,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: D,26451,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,26581,C
+  Pronađena predikcija: X,26581,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,26646,C
+  Pronađena predikcija: X,26646,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,26664,C
+  Pronađena predikcija: X,26664,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,27049,G
+  Pronađena predikcija: X,27049,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,27055,T
+  Pronađena predikcija: X,27055,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,27331,-
+  Pronađena predikcija: D,27331,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,27332,A
+  Pronađena predikcija: X,27332,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,27869,C
+  Pronađena predikcija: X,27869,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,27945,T
+  Pronađena predikcija: X,27945,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,28192,-
+  Pronađena predikcija: D,28192,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,28234,G
+  Pronađena predikcija: X,28234,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,28392,-
+  Pronađena predikcija: D,28392,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,28568,A
+  Pronađena predikcija: X,28568,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,28577,C
+  Pronađena predikcija: I,28577,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,28602,T
+  Pronađena predikcija: X,28602,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,28606,T
+  Pronađena predikcija: X,28606,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,28688,G
+  Pronađena predikcija: I,28688,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,28707,C
+  Pronađena predikcija: I,28707,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,28762,A
+  Pronađena predikcija: I,28762,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,28915,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,29048,A
+  Pronađena predikcija: X,29048,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,29192,A
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: I,29194,T
+  Pronađena predikcija: I,29194,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,29697,C
+  Pronađena predikcija: X,29697,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,29977,-
+  Pronađena predikcija: D,29977,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,30246,A
+  Pronađena predikcija: X,30246,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,30787,G
+  Pronađena predikcija: X,30787,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,31469,C
+  Pronađena predikcija: I,31469,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,31493,T
+  Pronađena predikcija: I,31493,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,31555,T
+  Pronađena predikcija: X,31555,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,31663,G
+  Pronađena predikcija: X,31663,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,31984,-
+  Pronađena predikcija: D,31984,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,32080,G
+  Pronađena predikcija: I,32080,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,32149,C
+  Pronađena predikcija: X,32149,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,32582,A
+  Pronađena predikcija: X,32582,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,32854,A
+  Pronađena predikcija: X,32854,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,33177,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,33186,A
+  Pronađena predikcija: X,33186,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,33403,C
+  Pronađena predikcija: X,33403,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,33522,C
+  Pronađena predikcija: X,33522,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,33823,G
+  Pronađena predikcija: X,33823,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,33965,A
+  Pronađena predikcija: X,33965,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,34934,G
+  Pronađena predikcija: X,34934,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,35049,C
+  Pronađena predikcija: X,35049,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,35157,C
+  Pronađena predikcija: X,35157,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,35268,C
+  Pronađena predikcija: X,35268,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,35630,C
+  Pronađena predikcija: X,35630,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,35900,G
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,35939,C
+  Pronađena predikcija: X,35939,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,36272,C
+  Pronađena predikcija: X,36272,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,36867,-
+  Pronađena predikcija: D,36867,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,37000,A
+  Pronađena predikcija: X,37000,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,37116,-
+  Pronađena predikcija: D,37116,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,37338,G
+  Pronađena predikcija: X,37338,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,37501,G
+  Pronađena predikcija: X,37501,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,37509,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: D,38447,-
+  Pronađena predikcija: D,38447,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,38500,G
+  Pronađena predikcija: X,38500,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,38956,-
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,39061,T
+  Pronađena predikcija: X,39061,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,39209,G
+  Pronađena predikcija: X,39209,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,39225,C
+  Pronađena predikcija: X,39225,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,39362,-
+  Pronađena predikcija: D,39362,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,39457,C
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,39806,T
+  Pronađena predikcija: X,39806,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,40432,T
+  Pronađena predikcija: X,40432,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,40497,T
+  Pronađena predikcija: X,40497,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,40991,T
+  Pronađena predikcija: X,40991,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,41146,C
+  Pronađena predikcija: X,41146,C
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,41508,G
+  Pronađena predikcija: X,41508,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,41655,T
+  Pronađena predikcija: I,41655,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,41713,G
+  Pronađena predikcija: I,41713,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,41877,A
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,42389,A
+  Pronađena predikcija: X,42389,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,42564,T
+  Pronađena predikcija: X,42564,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,42876,G
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: I,42983,T
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: I,43524,T
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: I,43678,G
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: D,43722,-
+  Pronađena predikcija: X,43722,T
+    Pozicija odgovara, ali tip ne: +1 bodova
+Provjera referentne mutacije: X,43867,A
+  Pronađena predikcija: X,43867,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,43949,A
+  Pronađena predikcija: X,43949,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,44373,G
+  Pronađena predikcija: X,44373,A
+    Tip odgovara, ali baza ne: +2 bodova
+Provjera referentne mutacije: X,44428,T
+  Pronađena predikcija: X,44428,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,44436,G
+  Pronađena predikcija: X,44436,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,44566,G
+  Pronađena predikcija: X,44566,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,45044,A
+  Pronađena predikcija: X,45044,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,45142,G
+  Pronađena predikcija: X,45142,G
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,45653,T
+  Pronađena predikcija: X,45653,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: I,45851,T
+  Pronađena predikcija: I,45851,C
+    Tip odgovara, ali baza ne: +2 bodova
+Provjera referentne mutacije: X,45905,C
+  Pronađena predikcija: X,45905,T
+    Tip odgovara, ali baza ne: +2 bodova
+Provjera referentne mutacije: X,46230,A
+  Pronađena predikcija: X,46230,A
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,46818,-
+  Pronađena predikcija: X,46818,C
+    Pozicija odgovara, ali tip ne: +1 bodova
+Provjera referentne mutacije: X,47009,T
+  Pronađena predikcija: X,47009,T
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,47093,A
+  Pronađena predikcija: X,47093,T
+    Tip odgovara, ali baza ne: +2 bodova
+Provjera referentne mutacije: X,47143,A
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: D,47224,-
+  Pronađena predikcija: D,47224,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: D,47421,-
+  Pronađena predikcija: X,47421,T
+    Pozicija odgovara, ali tip ne: +1 bodova
+Provjera referentne mutacije: D,47872,-
+  Pronađena predikcija: D,47872,-
+    Sve odgovara: +3 bodova
+Provjera referentne mutacije: X,47976,T
+  Nema predikcije za tu poziciju
+Provjera referentne mutacije: X,48018,C
+  Pronađena predikcija: X,48018,C
+    Sve odgovara: +3 bodova
+====================
+Osvojeni bodovi: 515
+Maksimalni bodovi: 606
+Točnost: 84.98%
