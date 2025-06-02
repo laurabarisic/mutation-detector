@@ -1,10 +1,10 @@
-#include <iostream>
 #include <fstream>
+#include <iomanip>
+#include <iostream>
 #include <sstream>
 #include <string>
-#include <vector>
 #include <unordered_map>
-#include <iomanip>
+#include <vector>
 
 using namespace std;
 
@@ -12,18 +12,18 @@ string DATA_PATH = "../data/";
 
 // Represents a single mutation
 struct Mutation {
-    string type;   // "X", "I", "D"
+    string type; // "X", "I", "D"
     int position;
     string newValue;
 };
 
 // Aliases for better readability
 using MutationList = vector<Mutation>;
-using MutationMap = unordered_map<int, pair<string, string>>; // position -> (type, newValue)
-
+using MutationMap =
+    unordered_map<int, pair<string, string>>; // position -> (type, newValue)
 
 // Parse a CSV line into a Mutation object
-Mutation parseLine(const string& line) {
+Mutation parseLine(const string &line) {
     stringstream ss(line);
     string type, posStr, val;
     getline(ss, type, ',');
@@ -33,7 +33,7 @@ Mutation parseLine(const string& line) {
 }
 
 // Load mutations from a CSV file (ignores header)
-MutationList loadFromFile(const string& filename) {
+MutationList loadFromFile(const string &filename) {
     MutationList list;
     ifstream file(filename);
     if (!file) {
@@ -51,16 +51,16 @@ MutationList loadFromFile(const string& filename) {
 }
 
 // Create a hash map for fast mutation lookup by position
-MutationMap indexByPosition(const MutationList& list) {
+MutationMap indexByPosition(const MutationList &list) {
     MutationMap map;
-    for (const auto& m : list) {
+    for (const auto &m : list) {
         map[m.position] = {m.type, m.newValue};
     }
     return map;
 }
 
 // Compare predicted mutations against reference mutations
-double evaluate(const MutationList& predicted, const MutationList& reference) {
+double evaluate(const MutationList &predicted, const MutationList &reference) {
 
     const int scorePos = 1;
     const int scoreType = 1;
@@ -71,20 +71,20 @@ double evaluate(const MutationList& predicted, const MutationList& reference) {
 
     MutationMap predictedMap = indexByPosition(predicted);
 
-    for (const auto& ref : reference) {
+    for (const auto &ref : reference) {
         total += scorePos + scoreType + scoreValue;
 
         auto it = predictedMap.find(ref.position);
         if (it != predictedMap.end()) {
-            const auto& [pType, pVal] = it->second;
+            const auto &[pType, pVal] = it->second;
             earned += scorePos;
 
             if (pType == ref.type) {
                 earned += scoreType;
                 if (pVal == ref.newValue) {
                     earned += scoreValue;
-                } 
-            } 
+                }
+            }
         }
     }
 
