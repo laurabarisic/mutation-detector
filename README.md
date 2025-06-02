@@ -74,7 +74,7 @@ Legenda tipova:
 
 👩‍🔬 Autori
 
-    -Laura Barišić
+    - Laura Barišić
 
     - Mia Nazor
 
