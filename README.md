@@ -27,22 +27,21 @@ Za rad na ovom projektu potrebni su sljedeći alati:
 
 #### Minimap2
 
-```bash
-git clone https://github.com/lh3/minimap2
-cd minimap2
-make
+    git clone https://github.com/lh3/minimap2
+    cd minimap2
+    make```bash
 
 #### FreeBayes
 
-git clone --recursive https://github.com/freebayes/freebayes.git
-cd freebayes
-make
+    git clone --recursive https://github.com/freebayes/freebayes.git
+    cd freebayes
+    make
 
 ▶️ Korištenje
 🔧 Pokretanje programa
 
-g++ bioinf.cpp -o bioinf
-./bioinf
+    g++ bioinf.cpp -o bioinf
+    ./bioinf
 
 Nakon pokretanja, generira se freebayes_mutations.csv s popisom detektiranih mutacija.
 📄 Ulazni i izlazni podaci
@@ -83,4 +82,4 @@ Ovaj projekt služi isključivo za edukativne svrhe. Potencijalne nadogradnje uk
 
     Dodatne vizualizacije rezultata
 
-    Integraciju dodatnih bioinformatičkih alata
+
