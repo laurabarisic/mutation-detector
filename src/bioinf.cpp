@@ -11,6 +11,7 @@ using namespace std;
 
 string DATA_DIR = "../data/";
 
+// Structure for storing SAM record information
 struct SamRecord {
     string qname;
     int flag;
@@ -20,6 +21,7 @@ struct SamRecord {
     string seq;
 };
 
+// Structure for storing votes at a position in the reference genome
 struct PosVotes {
     int none = 0;
     int deleted = 0;
@@ -29,6 +31,7 @@ struct PosVotes {
     vector<char> insertionBases;
 };
 
+// Function for reverse complementing a sequence
 string reversee(const string &seq) {
     string reversed_seq(seq.length(), ' ');
     size_t index = 0;
@@ -56,6 +59,7 @@ string reversee(const string &seq) {
     return reversed_seq;
 }
 
+// Function to read a FASTA file and return the sequence as a string
 string read_fasta(const string &filename) {
     ifstream file(filename);
     if (!file) {
@@ -73,6 +77,8 @@ string read_fasta(const string &filename) {
     return sequence;
 }
 
+// Function to parse a SAM line and fill the SamRecord structure
+// Returns true if the line is successfully parsed, otherwise false
 bool parse_sam_line(const string &line, SamRecord &record) {
     istringstream iss(line);
     vector<string> fields;
@@ -99,6 +105,7 @@ bool parse_sam_line(const string &line, SamRecord &record) {
     return true;
 }
 
+// Function to read a SAM file and return a vector of SamRecord structures
 vector<SamRecord> read_sam(const string &filename) {
     ifstream file(filename);
     if (!file) {
@@ -122,6 +129,8 @@ vector<SamRecord> read_sam(const string &filename) {
     return records;
 }
 
+// Function to perform voting on the mutations
+// at each position in the reference genome
 void voting(unordered_map<int64_t, PosVotes> &dict,
             unordered_map<int64_t, pair<string, string>> &final_dict) {
     string max_votes;
@@ -180,6 +189,7 @@ void voting(unordered_map<int64_t, PosVotes> &dict,
     }
 }
 
+// Function to process and identify mutations
 void mutations(const vector<SamRecord> &sam_records,
                unordered_map<int64_t, PosVotes> &dict,
                const string &fasta_sequence,
@@ -197,24 +207,19 @@ void mutations(const vector<SamRecord> &sam_records,
 
         while (i < record.cigar.length()) {
             string num = "";
-            // int64_t length = 0;
-            // while (i < record.cigar.length() && isdigit(record.cigar[i])) {
-            //     length *= 10;
-            //     length += record.cigar[i] - '0';
-            //     i++;
-            // }
-
+            int64_t length = 0;
             while (i < record.cigar.length() && isdigit(record.cigar[i])) {
-                num += record.cigar[i];
+                length *= 10;
+                length += record.cigar[i] - '0';
                 i++;
             }
 
             if (i >= record.cigar.length())
                 break;
             char op = record.cigar[i];
-            int64_t length = stoll(num);
             i++;
 
+            // Check mutation operation and process accordingly
             if (op == 'M') {
                 for (int j = 0; j < length; ++j) {
                     if (refPos >= fasta_sequence.size() ||
@@ -285,7 +290,7 @@ void mutations(const vector<SamRecord> &sam_records,
     matchingFile.close();
 
     ofstream votingFile(DATA_DIR + "voting.txt");
-    // Zapisivanje glasova u datoteku
+    // Writing votes to the file
     votingFile << "\n--- Glasovi po pozicijama u referentnom genomu ---\n";
     for (const auto &[pos, votes] : dict) {
         votingFile << "Pozicija: " << pos << "\n";
@@ -309,7 +314,7 @@ void mutations(const vector<SamRecord> &sam_records,
         votingFile << "\n\n";
     }
 
-    // Zatvaranje datoteke
+    // Closing the voting file
     votingFile.close();
 
     voting(dict, final_dict);
@@ -335,7 +340,7 @@ int main() {
     unordered_map<int64_t, pair<string, string>> final_dict;
     mutations(sam_records, dict, fasta_sequence, final_dict);
 
-    // zapis u CSV datoteku
+    // Writing to CSV file
     ofstream outfile(DATA_DIR + "mutations.csv");
     if (!outfile) {
         cerr << "Greška pri otvaranju datoteke za pisanje mutacija." << endl;
