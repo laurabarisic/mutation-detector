@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <fstream>
 #include <iostream>
@@ -206,7 +207,6 @@ void mutations(const vector<SamRecord> &sam_records,
         int i = 0;
 
         while (i < record.cigar.length()) {
-            string num = "";
             int64_t length = 0;
             while (i < record.cigar.length() && isdigit(record.cigar[i])) {
                 length *= 10;
@@ -321,6 +321,8 @@ void mutations(const vector<SamRecord> &sam_records,
 }
 
 int main() {
+    auto start_time = std::chrono::high_resolution_clock::now();
+
     string fasta_path = DATA_DIR + "lambda.fasta";
     string sam_path = DATA_DIR + "lambda.sam";
 
@@ -359,5 +361,10 @@ int main() {
     }
     outfile.close();
 
+    auto end_time = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end_time - start_time;
+
+    std::cout << "Vrijeme izvođenja: " << elapsed_seconds.count()
+              << " sekundi\n";
     return 0;
 }
