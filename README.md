@@ -47,7 +47,7 @@ Za rad na ovom projektu potrebni su sljedeći alati:
     markedBam="lambda_marked.bam"
     csvOutput="lambda_mutated.csv"
     vcfOutput="lambda_freebayes.vcf"
-    freebayesOutput="lambda_freebayes_mutations.csv"
+    vcfOutputFiltered="lambda_freebayes_filtered.vcf"  
     index="lambda.fasta.fai"
     
     # Step 1: Run Minimap2
@@ -71,6 +71,9 @@ Za rad na ovom projektu potrebni su sljedeći alati:
     # Step 7: Run FreeBayes for evaluation 
     freebayes -f $reference $markedBam > $vcfOutput
 
+    # Step 8: Run FreeBayes with filters
+    freebayes -f $reference --min-alternate-count 3\ --min-alternate-fraction 0.4 \ $markedBam > $vcfOutputFiltered
+    
 ### ▶️ Pokretanje programa
 
     cd src
