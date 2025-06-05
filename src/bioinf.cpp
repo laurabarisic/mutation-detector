@@ -101,9 +101,9 @@ bool parse_sam_line(const string &line, SamRecord &record) {
     record.seq = fields[9];
 
     // If this is commented we get better results
-    // but it is not correct according to the SAM specification
-    if (record.flag & 16)
-        record.seq = reversee(record.seq);
+    // and results more like FreeBayes
+    //if (record.flag & 16)
+      //  record.seq = reversee(record.seq);
 
     return true;
 }
@@ -343,7 +343,7 @@ int main() {
     mutations(sam_records, dict, fasta_sequence, final_dict);
 
     // Writing to CSV file
-    ofstream outfile(DATA_DIR + "mutations.csv");
+    ofstream outfile(DATA_DIR + "lambda_mutations1.csv");
     if (!outfile) {
         cerr << "Greška pri otvaranju datoteke za pisanje mutacija." << endl;
         return 1;
