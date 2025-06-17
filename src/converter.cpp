@@ -33,10 +33,18 @@ string tip_mutacije(const string& ref, const string& alt_raw) {
     }
 }
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        cerr << "Upotreba: " << argv[0] << " <input_vcf> <output_csv>" << endl;
+        return 1;
+    }
+
+    string input_vcf = DATA_DIR + argv[1];
+    string output_csv = DATA_DIR + argv[2];
+
     // Open input VCF file and output CSV file
-    ifstream vcf(DATA_DIR + "freebayes.vcf");
-    ofstream csv_out(DATA_DIR + "freebayes_mutations.csv");
+    ifstream vcf(input_vcf);
+    ofstream csv_out(output_csv);
 
     if (!vcf.is_open() || !csv_out.is_open()) {
         cerr << "Error opening files!" << endl;

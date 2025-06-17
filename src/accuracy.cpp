@@ -93,9 +93,18 @@ double evaluate(const MutationList &predicted, const MutationList &reference) {
     return accuracy;
 }
 
-int main() {
-    const string predFile = DATA_PATH + "mutations.csv";
-    const string refFile = DATA_PATH + "lambda_mutated.csv";
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        cerr << "Upotreba: " << argv[0] << " <file_name> <compare_name>" << endl;
+        return 1;
+    }
+
+    string file_name = argv[1];
+    string compare_name = argv[1];
+  
+  
+    const string predFile = DATA_PATH + file_name;
+    const string refFile = DATA_PATH + compare_name;
 
     MutationList predicted = loadFromFile(predFile);
     MutationList reference = loadFromFile(refFile);

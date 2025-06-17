@@ -320,16 +320,22 @@ void mutations(const vector<SamRecord> &sam_records,
     voting(dict, final_dict);
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     auto start_time = std::chrono::high_resolution_clock::now();
 
-    string fasta_path = DATA_DIR + "lambda.fasta";
-    string sam_path = DATA_DIR + "lambda.sam";
+    if (argc != 4) {
+        cerr << "Upotreba: " << argv[0] << " <fasta_filename> <sam_filename> <izlazna_csv_datoteka>" << endl;
+        return 1;
+    }
 
-    string fasta_sequence = read_fasta(fasta_path);
+    string fasta_filename = DATA_DIR + argv[1];
+    string sam_filename = DATA_DIR + argv[2];
+    string output_csv = DATA_DIR + argv[3];
+
+    string fasta_sequence = read_fasta(fasta_filename);
     cout << "FASTA duljina: " << fasta_sequence.size() << " znakova\n";
 
-    vector<SamRecord> sam_records = read_sam(sam_path);
+    vector<SamRecord> sam_records = read_sam(sam_filename);
     cout << "\nUkupno očitanih SAM zapisa: " << sam_records.size() << "\n";
 
     for (const auto &r : sam_records) {
@@ -343,7 +349,7 @@ int main() {
     mutations(sam_records, dict, fasta_sequence, final_dict);
 
     // Writing to CSV file
-    ofstream outfile(DATA_DIR + "lambda_mutations1.csv");
+    ofstream outfile(output_csv);
     if (!outfile) {
         cerr << "Greška pri otvaranju datoteke za pisanje mutacija." << endl;
         return 1;
