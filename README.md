@@ -89,9 +89,10 @@ Za rad na ovom projektu potrebni su sljedeći alati:
 
     cd src
     g++ bioinf.cpp -o bioinf
-    *ukoliko pokrećemo program nad lambda podacima:
+    
+    * ukoliko pokrećemo program nad lambda podacima:
         ./bioinf lambda.fasta lambda.sam lambda_mutations.csv
-    *ukoliko pokrećemo program nad ecoli podacima:
+    * ukoliko pokrećemo program nad ecoli podacima:
         ./bioinf ecoli.fasta ecoli.sam ecoli_mutations.csv    
     
 
@@ -101,7 +102,9 @@ Nakon pokretanja, generira se.csv datoteka s popisom detektiranih mutacija.
 
     Ulaz:
     
-        lambda.fasta/ecoli.fasta, lambda.sam/ecoli.sam (ulazne datoteke se nalaze u /data direktoriju projekta)
+        lambda.fasta/ecoli.fasta, lambda.sam/ecoli.sam 
+        
+        (ulazne datoteke se nalaze u /data direktoriju projekta)
     
     Izlaz:
 
@@ -135,7 +138,7 @@ Nakon pokretanja, generira se.csv datoteka s popisom detektiranih mutacija.
         g++ accuracy.cpp -o accuracy
         ./accuracy lambda_mutations.csv lambda_mutated.csv 
 
-    - aaliza usporedbe rezultata dobivenih mutacija ovog programa, FreeBayesovih rezltata te u sklopu projekta dobivenih referentnih rezultata
+    - analiza usporedbe rezultata dobivenih mutacija ovog programa, FreeBayesovih rezltata te u sklopu projekta dobivenih referentnih rezultata
     može se dobiti pokretanjem skripte compare_mutations.cpp koja ispisuje:
             
             * koliko ukupno varijanti ima svaka datoteka
@@ -145,6 +148,35 @@ Nakon pokretanja, generira se.csv datoteka s popisom detektiranih mutacija.
         g++ compare_mutations.cpp -o compare_mutations
         ./compare_mutations
 
+## Sadržaj mutation-detector GitHub repozitorija
+### data
+    ecoli.fasta = u sklopu zadaka dobiveni referentni genom ecoli
+    ecoli_freebayes_filtered.vcf = FreeBayes alatom s dodatnim parametrima za filtriranje generirana .vcf datoteka za ecoli
+    ecoli_freebayes_filtered_mutations.csv = converter.cpp skriptom generirana .csv datoteka iz ecoli_freebayes_filtered.vcf radi lakšeg uspoređianja
+    ecoli_mutated.csv = u sklopu zadaka dobiven popis mutacija za referentni genom ecoli
+    ecoli_mutations.csv = bioinf.cpp skriptom (našim programom) generirana .csv datoteka s konačnim detektiranim mutacijama
+    lambda.bam = datoteka potrebna za FreeBayes alat
+    lambda.fasta = u sklopu zadaka dobiveni referentni genom lambda
+    lambda.fasta.fai = datoteka potrebna za FreeBayes alat
+    lambda.sam = alatom minimap2 generirana .sam datoteka s poravnatim očitanjima na referentni genom
+    lambda_freebayes.vcf = FreeBayes alatom (bez dodatnih parametara za filtriranje) generirana .vcf datoteka za lambda
+    lambda_freebayes_filtered.vcf = FreeBayes alatom s dodatnim parametrima za filtriranje generirana .vcf datoteka za lambda
+    lambda_freebayes_mutations.csv = converter.cpp skriptom generirana .csv datoteka iz lambda_freebayes.vcf radi lakšeg uspoređianja
+    lambda_freebayes_mutations_filtered.csv = converter.cpp skriptom generirana .csv datoteka iz lambda_freebayes_filtered.vcf radi lakšeg uspoređianja
+    lambda_marked.bam = datoteka potrebna za FreeBayes alat
+    lambda_marked.bam.bai = datoteka potrebna za FreeBayes alat
+    lambda_mutated.csv = u sklopu zadaka dobiven popis mutacija za referentni genom lambda
+    lambda_mutations.csv = bioinf.cpp skriptom (našim programom) generirana .csv datoteka s konačnim detektiranim mutacijama
+    lambda_simulated_reads.fasta = u sklopu zadaka dobivena neporavnata očitanja za referentni genom lambda
+    lambda_sorted.bam = datoteka potrebna za FreeBayes alat
+### docs
+    Seminar[2025]Barišić_Laura_i_Mia_Nazor-5.docx = dokumentacija u .docx formatu
+    Seminar[2025]Barišić_Laura_i_Mia_Nazor-5.pdf = dokumentacija u .pdf formatu
+### src
+    accuracy.cpp = skripta koja računa točnost (našim programom) detektiranih mutacija
+    bioinf.cpp = glavna skripta ovog projekta koja detektira mutacije te ih sprema u .csv datoteku te generira matching.txt i voting.txt datoteke
+    compare_mutations.cpp = skripta koja uspoređuje referentni popis mutacija, rezultate dobivenih mutacija bioinf.cpp skriptom te FreeBayesove rezultate
+    converter.cpp = skripta koja kovertira .vcf datoteku u .csv datoteku radi lakšeg uspoređivanja rezultata
 
 ## 👩‍🔬 Autori
 
