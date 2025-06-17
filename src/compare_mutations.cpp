@@ -91,7 +91,7 @@ int main() {
 
     auto ecoli_mutated = loadCustomCSV(DATA_DIR + "ecoli_mutated.csv");
     auto ecoli_mutations = loadCustomCSV(DATA_DIR + "ecoli_mutations.csv");
-    auto ecoli_freebayes = loadFreebayesCSV(DATA_DIR + "ecoli_freebayes_mutations.csv");
+    auto ecoli_freebayes = loadFreebayesCSV(DATA_DIR + "ecoli_freebayes_filtered_mutations.csv");
 
     cout << "LAMBDA PODACI\n";
     cout << "Ukupan broj varijanti:\n";
